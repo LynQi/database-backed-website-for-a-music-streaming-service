@@ -1,0 +1,34 @@
+{
+  "name": "project",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "bluebird": "^3.5.1",
+    "body-parser": "~1.18.2",
+    "bootstrap-select": "^1.12.4",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "ejs": "^2.5.7",
+    "express": "~4.15.5",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.6",
+    "install": "^0.10.2",
+    "method-override": "^2.3.10",
+    "morgan": "~1.9.0",
+    "mysql": "^2.15.0",
+    "mysql2": "^1.5.1",
+    "npm": "^5.6.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "passport-local-sequelize": "^0.8.0",
+    "sequelize": "^4.27.0",
+    "sequelize-auto": "^0.4.29",
+    "sequelize-cli": "^3.2.0",
+    "serve-favicon": "^2.4.5"
+  }
+}

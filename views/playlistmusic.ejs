@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        body{
+            background-image: url("https://k39.kn3.net/taringa/3/3/8/1/3/7//aadamm/F6F.jpg?5702");
+            background-size:cover;
+
+        }
+        .col-center-block {
+            font-size: larger;
+            float: none;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 100px;
+        }
+        td{
+            font-size: 120%;
+        }
+        .white{
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <div class="row myCenter">
+        <div class="col-xs-6 col-md-8 col-center-block">
+            <table class = "table">
+                <thead>
+                <tr class = "white">
+                    <th scope="col">Music</th>
+                    <th scope="col">Duration</th>
+                    <th scope="col">Artist</th>
+                    <th scope="col">Genre</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <%result.forEach(function(e){%>
+                <tr>
+                    <td class = "white"><%=e.track.trtitle%></td>
+                    <td class = "white"><%=e.track.duration%></td>
+                    <td class = "white"><%=e.track.aname%></td>
+                    <td class = "white"><%=e.track.genre%></td>
+                    <form name="play" method="get" action="/play/<%=e.tid%>">
+                        <td><button class="btn btn-lg btn-primary btn-block">play</button></td>
+                        <input name="uid" type="hidden" value="<%=uid%>">
+                        <input name="aid" type="hidden" value="<%=e.track.aid%>">
+                    </form>
+                    <form name="deletemusic" method="get" action="/deletemusic/<%=e.tid%>">
+                        <td><button class="btn btn-lg btn-primary btn-block">Delete</button></td>
+                        <input name="uid" type="hidden" value="<%=uid%>">
+                        <input name="pid" type="hidden" value="<%=e.pid%>">
+                    </form>
+                </tr>
+                <%})%>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>
+

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        body{
+            background-image: url("https://k39.kn3.net/taringa/3/3/8/1/3/7//aadamm/F6F.jpg?5702");
+            background-size:cover;
+        }
+        .top{
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        td{
+            font-size: 150%;
+        }
+        .white{
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <% if(error && error.length > 0){ %>
+    <div class="alert alert-danger flash" role="alert">
+        <%=error%>
+    </div>
+    <%}%>
+    <% if(success && success.length > 0){ %>
+
+    <div class="alert alert-success flash " role="alert">
+        <%=success%>
+    </div>
+    <%}%>
+
+</div>
+<div class="container d-flex h-100">
+    <div class="row justify-content-center align-self-center top">
+        <form id="search" name="search" method="get" action="/search">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <select  name="select"> <!--Supplement an id here instead of using 'name'-->
+                        <option value="music" selected>Music</option>
+                            <option value="album">Album</option>
+                            <option value="artist">Artist</option>
+                            <option value="friend">Friend</option>
+                    </select>
+                    </span>
+                        <input name="search" type="text" class="form-control" />
+                        <input name="uid" type="hidden" value="<%=uid%>">
+                    <span class="input-group-btn">
+                            <input class="btn btn-defualt" type="submit" value="Search" />
+                    </span>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="text-left">
+    <div class="container">
+        <div class="row top ">
+            <div class="col-md-2 top">
+
+            <a class="btn btn-lg btn-block btn-info " href = "/users/<%=uid%>/change">Change Profile</a>
+            </div>
+            <div class="col-md-2 top">
+
+            <a class="btn btn-lg btn-block btn-info " href = "/playlist/<%=uid%>">Playlist</a>
+            </div>
+            <div class="col-md-2 top">
+            <a class="btn btn-lg btn-block btn-info " href = "/favor/<%=uid%>">Favor Artist</a>
+            </div>
+            <div class="col-md-2 top">
+                <a class="btn btn-lg btn-block btn-info " href = "/createplaylist/<%=uid%>">Create Playlist</a>
+            </div>
+            <div class="col-md-2 top">
+            <a class="btn btn-lg btn-block btn-info " href = "/friend/<%=uid%>">followed user</a>
+            </div>
+            <div class="col-md-2 top">
+                <a class="btn btn-lg btn-block btn-danger " href = "/">log out</a>
+            </div>
+        </div>
+        <div class="col-md-2  top">
+            <table class = "table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-center white">top 5 hot Album</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% albres.forEach(function(e){%>
+                        <tr>
+                            <form name="album" method="get" action="/album/<%=e.alid%>">
+                            <td>
+                                <button class="btn form-control btn-md btn-block"><%=e.altitle%></button>
+                            </td>
+                            <input name="uid" type="hidden" value="<%=uid%>">
+                            </form>
+                        </tr>
+                    <%})%>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-md-2 col-md-offset-1 top white">
+            <table class = "table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col" class="text-center">followed user</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% flw.forEach(function(e){%>
+                <tr>
+                    <form name="see" method="get" action="/see/<%=e.fuid%>">
+                        <td><button class="btn btn-md btn-default btn-block"><%=e.fuid%></button></td>
+                        <input name="uid" type="hidden" value="<%=uid%>">
+                    </form>
+                </tr>
+                <%})%>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-md-2 col-md-offset-1 top white">
+            <table class = "table">
+                <thead>
+                <tr>
+                    <th scope="col" class="text-center">profile</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>ID:<%= prof.uid %></strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Name:<%= prof.uname %></strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Email:<%= prof.email%></strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>City:<%= prof.city%></strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+
+                <div class="text-center">
+                    <a href="#intro" class="totop"><i class="fa fa-angle-up fa-3x"></i></a>
+                    <!--<p class="white">&copy; copyright:Yongqi Jing & Linqi</p>-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+
+</html>
+

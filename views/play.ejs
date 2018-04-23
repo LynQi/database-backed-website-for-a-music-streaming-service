@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        body{
+            background-image: url("https://k39.kn3.net/taringa/3/3/8/1/3/7//aadamm/F6F.jpg?5702");
+            background-size:cover;
+
+        }
+        .col-center-block {
+            font-size: larger;
+            float: none;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 150px;
+            text-align: center;
+        }
+        td{
+            font-size: 150%;
+        }
+        .white{
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <div class="row myCenter">
+        <div class=" col-md-4 col-center-block">
+            <iframe src="https://open.spotify.com/embed?uri=spotify%3Atrack%3A<%=track%>" width="250" height="330" frameborder="0" allowtransparency="true"></iframe>
+            <form id="rate" name="rate" method="get" action="/rating">
+            <label  for="rate" class ="white">Rating</label>
+            <select name="rate"> <!--Supplement an id here instead of using 'name'-->
+                <option value= "5">5</option>
+                <option value= "4">4</option>
+                <option value= "3">3</option>
+                <option value= "2">2</option>
+                <option value= "1">1</option>
+            </select>
+            <input name="uid" type="hidden" value="<%=uid%>">
+            <input name="tid" type="hidden" value="<%=track%>">
+             <input name="aid" type="hidden" value="<%=aid%>">
+            <input class="btn-md btn-warning form-control" type="submit" value="Confirm" />
+            </form>
+
+            <form id="addfavor" name="addfaovr" method="get" action="/addfavor">
+                <input name="uid" type="hidden" value="<%=uid%>">
+                <input name="tid" type="hidden" value="<%=track%>">
+                <input name="aid" type="hidden" value="<%=aid%>">
+                <input class="btn-md btn-info form-control" type="submit" value="Like Artist" />
+            </form>
+
+            <form id="addtoplaylist" name="addtoplaylist" method="get" action="/addtoplaylist">
+                <input name="uid" type="hidden" value="<%=uid%>">
+                <input name="tid" type="hidden" value="<%=track%>">
+                <input name="aid" type="hidden" value="<%=aid%>">
+                <input class="btn-md btn-primary form-control" type="submit" value="Add to Playlist" />
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
